@@ -19,14 +19,16 @@ constructor(private readonly authService: AuthService) {}
         return this.authService.login(loginUserDto);
     }
 
-      @Get('google')
-    @UseGuards(AuthGuard('google'))
-    googleAuth() {}
+  @Get('google')
+  @UseGuards(AuthGuard('google'))
+  googlelogin() {
+    // Initiates Google OAuth flow
+  }
 
   @Get('google/callback')
   @UseGuards(AuthGuard('google'))
-  googleAuthRedirect(@Req() req) {
-    return this.authService.googleLogin(req);
+  async googleCallback(@Req() req) {
+    return this.authService.googlelogin(req);
   }
 
 }
